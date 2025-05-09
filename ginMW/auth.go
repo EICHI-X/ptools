@@ -1,4 +1,4 @@
-package ginmiddleware
+package ginMW
 
 import (
 	"context"
