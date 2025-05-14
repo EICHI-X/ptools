@@ -1,10 +1,13 @@
 package purl
 
 import (
+	"context"
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"strings"
+
+	"github.com/EICHI-X/ptools/logs"
 )
 
 // FileInfo 文件信息
@@ -25,24 +28,25 @@ type URLProcessor struct{}
 func NewURLProcessor() *URLProcessor {
 	return &URLProcessor{}
 }
-
+var UrlFIleProcessor *URLProcessor = NewURLProcessor()
 // ProcessURL 处理URL
 // 如果URL以http开头，则直接返回
 // 如果URL是base64编码的元数据，则解析并返回其中的URL字段
-func (p *URLProcessor) ProcessURL(input string) (string, error) {
+func (p *URLProcessor) ProcessURL(ctx context.Context, input string) (string) {
 	// 检查是否是http开头的URL
 	if strings.HasPrefix(strings.ToLower(input), "http") {
-		return input, nil
+		return input
 	}
 
 	// 尝试解析为base64编码的元数据
 	fileInfo, err := p.decodeFileMetadata(input)
 	if err != nil {
-		return "", fmt.Errorf("无法处理输入: 既不是HTTP URL也不是有效的元数据: %w", err)
+		logs.Error(ctx, "无法处理输入: 既不是HTTP URL也不是有效的元数据: %w", err)
+		return ""
 	}
 
 	// 返回FileInfo中的URL字段
-	return fileInfo.URL, nil
+	return fileInfo.URL
 }
 
 // decodeFileMetadata 解析base64编码的文件元数据
