@@ -1,11 +1,11 @@
 module github.com/EICHI-X/ptools
 
-go 1.22.0
+go 1.24.3
 
 require (
 	github.com/aerospike/aerospike-client-go/v6 v6.15.0
 	github.com/bytedance/gopkg v0.0.0-20240202110943-5e26950c5e57
-	github.com/bytedance/sonic v1.11.6
+	github.com/bytedance/sonic v1.13.3
 	github.com/cloudwego/hertz v0.8.1
 	github.com/cloudwego/kitex v0.9.1
 	github.com/gin-gonic/gin v1.10.0
@@ -27,9 +27,8 @@ require (
 )
 
 require (
-	github.com/bytedance/sonic/loader v0.1.1 // indirect
-	github.com/cloudwego/base64x v0.1.4 // indirect
-	github.com/cloudwego/iasm v0.2.0 // indirect
+	github.com/bytedance/sonic/loader v0.2.5-0.20250603064738-b14cfe264322 // indirect
+	github.com/cloudwego/base64x v0.1.5 // indirect
 	github.com/gabriel-vasile/mimetype v1.4.3 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
